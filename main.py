@@ -1,6 +1,11 @@
 from Profesor import Profesor
 from Estudiante import Estudiante
-from load import Aescritura_desplazado,Alectura_desplazado
+from load import *
+import re
+import os
+import struct
+from datetime import datetime
+from Disco import Disco
 
 if __name__ == "__main__":
     idProfesor = 1
@@ -36,7 +41,8 @@ if __name__ == "__main__":
         print("# 1. Registro profesor   #")
         print("# 2. Registro estudiante #")
         print("# 3. Ver registro        #")
-        print("# 4. Salir               #")
+        print("# 4. Crear disco         #")
+        print("# 5. Salir               #")
         print("#************************#")
         
         eleccion = int(input('Elija la opcion: '))
@@ -81,6 +87,27 @@ if __name__ == "__main__":
             if len(auxEstudiante)>0:
                 for estudiante in auxEstudiante:
                     estudiante.imprimir_info()
+        elif eleccion == 4:
+            print("Escribe el comando: ")
+            comando = input()
+            validando = re.search(r'^execute\s*-path="([^"]+)"$', comando)
+            if validando :
+                rutaArchivo = validando.group(1)
+                print("Ruta: "+ rutaArchivo)
+                ruta = os.path.dirname(rutaArchivo)
+                if os.path.exists(ruta):
+                    disco = Disco()
+                    disco.set_infomation(5242880,datetime.now().strftime('%d/%m/%Y, %H:%M:%S'),0)
+                    fileOpen = open(rutaArchivo, "wb") 
+                    print("********* MKDISK *********")
+                    Winit_size(fileOpen,5)
+                    Aescritura_desplazado(fileOpen,desplazamiento,disco)
+                    print("*********** REP **********")
+                    print("MBR: ")
+                    disco.display_info()
+                    fileOpen.close()  
+            else:
+                print("El comando no se puede ejecutar.")
         else:
             exit()
         
