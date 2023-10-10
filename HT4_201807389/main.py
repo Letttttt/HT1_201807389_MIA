@@ -3,4 +3,4 @@ app = FastAPI()
 
 @app.get("/my-first-api")
 def hello():
-  return {"Hello worlddd!"}
+  return {"Hello world!"}
