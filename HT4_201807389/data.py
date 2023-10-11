@@ -1,3 +1,3 @@
 data = [
-    {"Nombre": "Gladys Leticia Ajuchan Vicente", "Carne": "201807389"}
+    {"Nombre": "Gladys Leticia Ajuchan Vicente", "Carnet": "201807389"}
 ]

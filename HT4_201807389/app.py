@@ -10,11 +10,8 @@ from data import data
 def getData():
     return jsonify(data)
 
-
 CARPETA_IMAGENES = r'C:\Users\lets\OneDrive - Facultad de Ingeniería de la Universidad de San Carlos de Guatemala\Documentos\GitHub\MIA_201807389\HT4_201807389\CARPETA_IMAGENES'
 
-
-# Función para obtener todas las imágenes en Base64, nombre y tamaño
 def obtener_imagenes_info():
     imagenes_info = []
     
